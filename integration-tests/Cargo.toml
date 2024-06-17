@@ -4,16 +4,17 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-casper-types = "4.0.1"
+casper-types = { git = "https://github.com/casper-network/casper-node.git", default-features = false, branch = "release-2.0.0-rc2" }
 casper-event-standard = { path = "../casper-event-standard" }
-casper-contract = { version = "4.0.0", optional = true }
-casper-engine-test-support = { version = "7.0.1", optional = true }
-casper-execution-engine = { version = "7.0.1", optional = true }
+casper-contract = { git = "https://github.com/casper-network/casper-node.git", branch = "release-2.0.0-rc2", optional = true }
+casper-engine-test-support = { git = "https://github.com/casper-network/casper-node.git", branch = "release-2.0.0-rc2", optional = true }
+casper-execution-engine = { git = "https://github.com/casper-network/casper-node.git", branch = "release-2.0.0-rc2", optional = true }
+casper-storage = { git = "https://github.com/casper-network/casper-node.git", branch = "release-2.0.0-rc2", optional = true }
 
 [features]
-default = ["test-support", "contract-support"]
+default = []
 contract-support = [ "dep:casper-contract" ]
-test-support = [ "dep:casper-engine-test-support", "dep:casper-execution-engine" ]
+test-support = [ "dep:casper-engine-test-support", "dep:casper-execution-engine", "dep:casper-storage" ]
 
 [[bin]]
 name = "event_producer"
